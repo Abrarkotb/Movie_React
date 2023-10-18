@@ -1,9 +1,13 @@
 import React from 'react'
+import Characteritem from './Characteritem'
+import Spinner from '../ui/Spinner'
 
 const CharacterGrid = ({items , ISLoading}) => {
-  return ISLoading ? (<h1>LOADING...</h1>) :(<section className='cards'>
+  return ISLoading ? 
+   <Spinner/>
+   :(<section className='cards'>
 {items.map(item =>(
-   <h1>{item.name}</h1>
+  <Characteritem key={item.char_id} item={item}></Characteritem>
 )
 )}
   </section>)

@@ -3,26 +3,30 @@ import axios from 'axios'
 import './App.css';
 import Header from './Components/ui/Header';
 import CharacterGrid from './Components/Characters/CharacterGrid';
+import Search from './Components/ui/Search';
 
 
 
 function App(){
 const[items, setItems] = useState([])
-const[ISLoading, setISloading] = useState([true])
+const[query, setQuery] = useState('')
 
 
 useEffect(() => {
    const fetchItems = async() => {
-   const result = await axios(`https://serpapi.com/search.json?engine=google_play_movies`)
-   console.log(result.data)
+   const result = await axios(`https://www.breakingbadapi.com/api/characters?name=${query}`)
+
    setItems(result.data)
    setISloading(false)
   }
  fetchItems()
-},[])
+},[query])
+
+
   return (
     <div className="container">
       <Header/>
+      <Search getQuery={(q) => setQuery(q)}/>
       <CharacterGrid ISLoading={ISLoading} items={items}/>
     </div>
   );
