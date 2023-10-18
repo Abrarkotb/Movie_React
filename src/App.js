@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
 import './App.css';
-import Header from './Components/Header';
+import Header from './Components/ui/Header';
 import CharacterGrid from './Components/Characters/CharacterGrid';
 
 
